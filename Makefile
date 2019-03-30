@@ -1,4 +1,4 @@
-THESIS = main
+THESIS = thesis
 CLASS = scutthesis
 # TEX, BIB, TEST dir
 TEX_DIR = tex

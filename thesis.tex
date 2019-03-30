@@ -1,0 +1,27 @@
+%# -*- coding: utf-8-unix -*-
+%% ============================================================================
+%% main.tex
+%% ============================================================================
+
+\documentclass{scutthesis}
+
+\input{tex/metadata.tex}
+\addbibresource{bib/thesis.bib}
+
+\begin{document}
+  \makecover
+
+  \frontmatter
+  \input{tex/abstract.tex}
+  
+  \tableofcontents
+
+  \mainmatter
+  \input{tex/chapter01.tex}
+  \input{tex/chapter02.tex}
+  \input{tex/chapter04.tex}
+ 
+
+  \printbibliography[heading=bibintoc]
+  \input{tex/thanks.tex}
+ \end{document}

@@ -59,11 +59,18 @@
 {\bfseries{\zihao{4}}}
 {\titlerule*[4pt]{\mdseries{.}}\mdseries \zihao{-4} \contentspage}
 
-% 增加粗宋体支持
+% 增加粗宋体和粗黑体支持
+%% for Windows Platform
 \let\cusongti\relax
-\newCJKfontfamily\cusongti{STSong}[AutoFakeBold]
+\newCJKfontfamily\cusongti{SimSun}[AutoFakeBold]
 \let\cuheiti\relax
-\newCJKfontfamily\cuheiti{STHeiti}[AutoFakeBold]
+\newCJKfontfamily\cuheiti{Hei}[AutoFakeBold]
+
+%% for macOS Platform
+% \let\cusongti\relax
+% \newCJKfontfamily\cusongti{STSong}[AutoFakeBold]
+% \let\cuheiti\relax
+% \newCJKfontfamily\cuheiti{Heiti}[AutoFakeBold]
 
 \AtBeginDocument{
   \hypersetup{
