@@ -61,7 +61,7 @@
 \setbeamerfont{institute}{size=\small}
 \usefonttheme[onlymath]{serif}
 
-\useoutertheme[height=28pt, width=64pt]{sidebar}
+\useoutertheme[height=28pt, width=56pt]{sidebar}
 \newcommand{\frameofframes}{/}
 \newcommand{\setframeofframes}[1]{\renewcommand{\frameofframes}{#1}}
 
@@ -151,6 +151,8 @@
   \institute{\scut@value@school}
   \date{\today}
   \begin{frame}
+    \centering
+    \includegraphics[width=5cm]{./scutlogo.png}
     \titlepage
   \end{frame}
   \begin{frame}{目录}
