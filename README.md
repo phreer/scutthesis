@@ -6,7 +6,7 @@
 模板当前只支持学士学位论文, 将来也许能进一步改进以支持研究生学位论文, 希望更多的同学一起参与进来完善本项目!
 
 <div align="center">
-    <a href="./pdf/thesis.pdf"><img src="./doc/thesis.png" height="330"></a>
+    <a href="./pdf/thesis.pdf"><img src="./doc/thesis.PNG" height="330"></a>
     <a href="./pdf/slide.pdf"><img src="./doc/slide.png" height="330"></a>
 </div>
 
