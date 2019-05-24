@@ -1,0 +1,105 @@
+\section{\LaTeX-Beamer 排版说明}
+\subsection{列表}
+\subsubsection{无序列表}
+\begin{frame}{无序列表}
+同普通的 \LaTeX 文档一样，使用 \lstinline{itemize} 环境来得到无序列表：
+\begin{itemize}
+  \item 这是一个无序列表。
+  \item 这是一个无序列表。
+  \item 这是一个无序列表。
+\end{itemize}
+\end{frame}
+
+
+\subsubsection{有序列表}
+\begin{frame}{有序列表}
+使用环境 \lstinline{enumerate} 创建有序列表, 使用方法无序列表类似。
+
+\begin{enumerate}
+  \item 这是一个有序列表。
+  \item 这是一个有序列表。
+  \item 这是一个有序列表。
+\end{enumerate}
+
+\end{frame}
+
+\subsubsection{描述性列表}
+\begin{frame}
+使用环境 \lstinline{description} 可创建带有主题词的列表，条目语法是 
+\lstinline{\item[主题] 内容}。
+\begin{description}
+    \item[主题一] 详细内容
+    \item[主题二] 详细内容
+    \item[主题三] 详细内容 \ldots
+\end{description}
+遗憾的是, 目前无法正常使用行内列表, 即以上几种列表的 * 版本. 另外也无法
+使用自定义样式列表.
+
+\end{frame}
+
+\subsection{数学排版}
+\label{sec:matheq}
+
+\subsubsection{公式排版}
+\label{sec:eqformat}
+\begin{frame}{公式排版}
+这里有举一个长公式排版的例子，来自 \href{http://www.tex.ac.uk/tex-archive/info/math/voss/mathmode/Mathmode.pdf}{《Math mode》}：
+
+\begin{multline}
+  \frac {1}{2}\Delta (f_{ij}f^{ij})= \\
+  2\left (\sum _{i<j}\chi _{ij}(\sigma _{i}-
+    \sigma _{j}) ^{2}+ f^{ij}\nabla _{j}\nabla _{i}(\Delta f)+\right .\\
+  \left .+\nabla _{k}f_{ij}\nabla ^{k}f^{ij}+
+    f^{ij}f^{k}\left [2\nabla _{i}R_{jk}-
+      \nabla _{k}R_{ij}\right ]\vphantom {\sum _{i<j}}\right )
+\end{multline}
+\end{frame}
+
+\subsubsection{定理环境}
+\begin{frame}{定理环境}{留数定理}
+这是一个定理的例子：
+\begin{thm}[留数定理]
+\label{thm:res}
+  假设$U$是复平面上的一个单连通开子集，$a_1,\ldots,a_n$是复平面上有限个点，$f$是定义在$U\backslash \{a_1,\ldots,a_n\}$上的全纯函数，
+  如果$\gamma$是一条把$a_1,\ldots,a_n$包围起来的可求长曲线，但不经过任何一个$a_k$，并且其起点与终点重合，那么：
+
+  \begin{equation}
+    \label{eq:res}
+    \ointop_{\gamma}f(z)\,\mathrm{d}z = 2\uppi\mathbf{i}\sum^n_{k=1}
+    \mathrm{I}(\gamma,a_k)\mathrm{Res}(f,a_k)
+  \end{equation}
+
+  如果$\gamma$是若尔当曲线，那么$\mathrm{I}(\gamma, a_k)=1$，因此：
+
+  \begin{equation}
+    \label{eq:resthm}
+    \ointop_{\gamma}f(z)\,\mathrm{d}z = 2\uppi\mathbf{i}\sum^n_{k=1}
+    \mathrm{Res}(f,a_k)
+  \end{equation}
+
+  % \oint_\gamma f(z)\, dz = 2\pi i \sum_{k=1}^n \mathrm{Res}(f, a_k ).
+
+  在这里，$\mathrm{Res}(f, a_k)$表示$f$在点$a_k$的留数，$\mathrm{I}(\gamma,a_k)$表示$\gamma$关于点$a_k$的卷绕数。
+  卷绕数是一个整数，它描述了曲线$\gamma$绕过点$a_k$的次数。如果$\gamma$依逆时针方向绕着$a_k$移动，卷绕数就是一个正数，
+  如果$\gamma$根本不绕过$a_k$，卷绕数就是零。
+\end{thm}
+\end{frame}
+
+\subsubsection{证明环境}
+\begin{frame}{留数定理的证明}
+\begin{proof}
+  首先，由……
+
+  其次，……
+
+  所以……
+\end{proof}
+
+上面的公式例子中，有一些细节希望大家注意。微分号d应该使用“直立体”也就是用mathrm包围起来。
+并且，微分号和被积函数之间应该有一段小间隔，可以插入 \lstinline{\\} 得到。
+斜体的$d$通常只作为一般变量。
+i,j作为虚数单位时，也应该使用“直立体”为了明显，还加上了粗体，例如 \lstinline{\\mathbf\{i\}}。斜体$i,j$通常用作表示“序号”。
+其他字母在表示常量时，也推荐使用“直立体”譬如，圆周率$\uppi$（需要upgreek宏包），自然对数的底$\mathrm{e}$。
+不过，我个人觉得斜体的$e$和$\pi$很潇洒，在不至于引起混淆的情况下，我也用这两个字母的斜体表示对应的常量。
+
+\end{frame}
