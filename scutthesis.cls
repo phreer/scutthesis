@@ -1,13 +1,13 @@
 %# -*- coding: utf-8-unix -*-
 
 %% scutthesis.cls
-%% date: 2019/3/26
+%% date: 2019/6/4
 %% Modified from SJTUThesis by Phree
 %% Sincere thanks to the original authors
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{scutthesis}[2019/03/26 v0.10 Template for South China University of Technology bachelors]
-\def\version{v0.10}
+\ProvidesClass{scutthesis}[2019/06/04 v0.11 Template for South China University of Technology bachelors]
+\def\version{v0.11}
 
 \PassOptionsToPackage{no-math}{fontspec}
 \LoadClass[a4paper, UTF8, zihao=-4]{ctexbook}
@@ -24,6 +24,7 @@
 \newcommand\chinesekeywords{\def\scut@value@chinesekeywords}
 \newcommand\englishkeywords{\def\scut@value@englishkeywords}
 
+\RequirePackage{fontspec}
 \RequirePackage{titletoc}
 \RequirePackage{floatrow}
 \RequirePackage{etoolbox}
@@ -87,13 +88,13 @@
   {}{}
 
 % 设置目录格式
-\renewcommand\@dotsep{0.5}
-
 \titlecontents{chapter}[0pt]
 {\vspace{2pt} \bfseries\zihao{4}}
 {\contentspush{\thecontentslabel\hspace{0.8em}}}
 {\bfseries{\zihao{4}}}
-{\titlerule*[4pt]{\mdseries{.}}\mdseries \zihao{-4} \contentspage}
+{\titlerule*[3pt]{\mdseries\zihao{-4}.}\mdseries \zihao{-4} \contentspage}
+
+\renewcommand{\cftdotsep}{0.1}
 
 % 增加粗宋体和粗黑体支持
 %% for Windows Platform
@@ -133,8 +134,8 @@
   right      = 2.5cm,
 }
 
-\linespread{1.7}
 %% CTeX Settings
+\linespread{1.7}
 % 名称：目录、表格索引、插图索引、算法、算法索引、代码
 \ctexset{%
   contentsname   = \scut@contentsname,
@@ -229,11 +230,6 @@
 \captionsetup[bi-second]{bi-second}
 \captionsetup[sub]{font=footnotesize}
 
-\DeclareCaptionOption{bi-second}[]{%
-    \def\tablename{Table}
-    \def\figurename{Figure}
-}
-
 % 绘制封面
 \newcommand\makecover{%
   \cleardoublepage
@@ -277,7 +273,9 @@
 
 % 英文摘要 + 关键字环境
 \newenvironment{englishabstract}{
-  \cleardoublepage
+  % This is ugly
+  \let\cleardoublepage\empty
+  \clearpage
   \chapter*{\scut@label@englishabstract}
   \addcontentsline{toc}{chapter}{\scut@label@englishabstract}
 }{
@@ -312,22 +310,6 @@
 \renewcommand{\bottomfraction}{0.65}
 \renewcommand{\floatpagefraction}{0.60}
 
-% Caption setting in caption and bicaption pacakge
-\DeclareCaptionFont{kaishu}{\kaishu}
-\captionsetup{format=plain,labelformat=simple,labelsep=space,justification=centering,font={small,kaishu}}
-\captionsetup[bi-first]{bi-first}
-\captionsetup[bi-second]{bi-second}
-\captionsetup[sub]{font=footnotesize}
-
-\DeclareCaptionOption{bi-first}[]{%
-    \def\tablename{\sjtu@tablename}
-    \def\figurename{\sjtu@figurename}
-}
-\DeclareCaptionOption{bi-second}[]{%
-    \def\tablename{Table}
-    \def\figurename{Figure}
-}
-
 % 定公式、图、表、算法、代码的编号为"3-1"的形式，即分隔符由.变为短杠
 \AtBeginDocument{%
   \renewcommand{\theequation}{\thechapter--\arabic{equation}}
@@ -345,17 +327,9 @@
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{d}[1]{D{.}{.}{#1}}% or D{.}{,}{#1} or D{.}{\cdot}{#1}
 
 % Setting Package siunitx
 \sisetup{detect-all} % Detecting fonts
-
-% 流程图定义基本形状
-\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm, text centered, draw=black]
-\tikzstyle{io} = [trapezium, trapezium left angle=75, trapezium right angle=105, minimum width=1cm, minimum height=1cm, text centered, draw=black]
-\tikzstyle{process} = [rectangle, minimum width=2cm, minimum height=1cm, text centered, draw=black]
-\tikzstyle{decision} = [diamond, minimum width=2cm, minimum height=1cm, text centered, draw=black]
-\tikzstyle{arrow} = [thick,->,>=stealth]
 
 % 定理环境
 % 因为我校的模板中并没有关于定义, 定理等环境的说明, 因此这部分没有改变.
